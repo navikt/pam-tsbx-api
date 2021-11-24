@@ -11,7 +11,7 @@ This app uses the [`token-support`][2] project to do REST endpoint protection
 and access token validation, more specifically the `token-validation-spring`
 library.
 
-[1]: https://github.com/navikt/pam-tsbx-front
+[1]: https://github.com/navikt/pam-tsbx-front#running-locally
 [2]: https://github.com/navikt/token-support#token-validation-spring
 
 ## Running this API locally
