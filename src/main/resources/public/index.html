@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Token sandbox API</title>
+    <meta charset='utf-8'>
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Token sandbox API &#x23f3;&#xfe0f;</h1>
+</header>
+
+<main>
+    <section>
+        <p>User messages can be fetched from API available at <code><a href="/api/v1/messages">/api/v1/messages</a></code>.</p>
+        <p>It requires a bearer access
+            token in <code>Authorization</code> header with a token obtained by exchanging id-porten identity token using
+            a token exchange service. The token audience must be <code>pam-tsbx-api</code>. The token should at minimum
+            contain the claims <code>pid</code> (Norwegian NIN) and <code>name</code>, so that this API can identify which
+            end user the API calls are made on behalf of.
+        </p>
+    </section>
+</main>
+
+</body>
+</html>

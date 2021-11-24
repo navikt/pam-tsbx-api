@@ -1,0 +1,45 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: "pam-tsbx-api"
+  namespace: "teampam"
+  labels:
+    "team": "teampam"
+spec:
+  image: {{image}}
+  port: 9211
+  liveness:
+    path: "/internal/isalive"
+    initialDelay: 10
+    timeout: 60
+  readiness:
+    path: "/internal/isready"
+    initialDelay: 10
+    timeout: 60
+  preStopHook:
+    http:
+      path: "/internal/stop"
+  replicas:
+    min: 1
+    max: 1
+    cpuThresholdPercentage: 50
+  prometheus:
+    enabled: true
+    path: "/metrics"
+  resources:
+    limits:
+      cpu: "500m"
+      memory: "256Mi"
+    requests:
+      cpu: "200m"
+      memory: "256Mi"
+  ingresses:
+    - {{ingress}}
+
+  # Allow pam-tsbx-front to communicate with us using authenticated tokens on behalf of end user.
+  tokenx:
+    enabled: true
+  accessPolicy:
+    inbound:
+      rules:
+        - application: pam-tsbx-front

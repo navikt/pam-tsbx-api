@@ -1,0 +1,9 @@
+logback:
+  access:
+    config-resource: /logback-access-test.xml
+
+no.nav.security.jwt:
+  issuer:
+    tokendings:
+      discoveryUrl: http://localhost:${mock-oauth2-server.port:8181}/tokendings/.well-known/openid-configuration
+      acceptedAudience: ${spring.application.name}

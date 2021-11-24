@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: pam-tsbx-api
+
+server:
+  port: 9211
+
+logback:
+  access:
+    config-resource: /logback-access.xml
+
+# For validation of bearer access tokens that this api service receives, which should be issued by token-x (tokendings oauth service):
+no.nav.security.jwt:
+  issuer:
+    tokendings:
+      discoveryUrl: ${TOKEN_X_WELL_KNOWN_URL}
+      acceptedAudience: ${TOKEN_X_CLIENT_ID}
