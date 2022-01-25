@@ -5,5 +5,5 @@ logback:
 no.nav.security.jwt:
   issuer:
     tokendings:
-      discoveryUrl: http://localhost:${mock-oauth2-server.port:8181}/tokendings/.well-known/openid-configuration
+      discoveryUrl: http://${mock-oauth2-server.hostname}:${mock-oauth2-server.port}/tokendings/.well-known/oauth-authorization-server
       acceptedAudience: ${spring.application.name}

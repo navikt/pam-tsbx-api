@@ -16,16 +16,6 @@ library.
 
 ## Running this API locally
 
-### Local OAuth2 server
-
-First you need to start a plain Mock OAuth2 server listening on localhost
-port 8181. If you already have this as part of running `pam-tsbx-front`, then
-you do not need to do it here.
-
-From the project directory:
-
-    docker-compose up -d
-
 ### From IntelliJ
 
 Run as Spring Boot application with `DevApplication` as main class.
@@ -36,8 +26,22 @@ Use the following command to start the Spring Boot app from Maven on the command
 
     mvn -Pdev
 
+### Local OAuth2 server
+
+An OAuth2 server is required to run alongside the application locally. When
+using either of the the above two methods to start app, an embedded mock OAuth2
+server is automatically started on port `19111`, if something isn't already
+listening on that port.
+
 ### Accessing the API
 
 API is available on http://localhost:9211
 
 It is meant to be called from app `pam-tsbx-front` on behalf of end users.
+
+## Tests
+
+Integration test [`MessagesControllerIT`][3] tests the API token validation
+using a temporary mock OAuth2 server instance.
+
+[3]: src/test/java/no/nav/arbeid/tsbx/messages/MessagesControllerIT.java

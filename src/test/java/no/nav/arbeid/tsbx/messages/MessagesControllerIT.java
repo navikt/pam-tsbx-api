@@ -2,7 +2,7 @@ package no.nav.arbeid.tsbx.messages;
 
 import com.nimbusds.jwt.SignedJWT;
 import no.nav.arbeid.tsbx.Application;
-import no.nav.arbeid.tsbx.mocks.MockOauthTokenExchangeServerInitializer;
+import no.nav.arbeid.tsbx.mocks.MockOAuth2ServerInitializer;
 import no.nav.security.mock.oauth2.MockOAuth2Server;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -21,10 +21,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.List;
 import java.util.Map;
 
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-@ContextConfiguration(initializers = { MockOauthTokenExchangeServerInitializer.class })
-@ExtendWith(SpringExtension.class)
+@ContextConfiguration(initializers = MockOAuth2ServerInitializer.class)
 public class MessagesControllerIT {
 
     private final TestRestTemplate restTemplate;
